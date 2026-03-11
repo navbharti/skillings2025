@@ -60,28 +60,28 @@ p3.display()
 ```
 ## Constructor Overloading
 ```python
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def distance(self, p1):
-        pass
+class Rectangle:
+    def __init__(self, length=None, breadth=None):
+        self.length = 10.0
+        self.breadth = 10.0
+        if length==None and breadth==None:
+            self.length = 10.0
+            self.breadth = 10.0
+        elif length!=None and breadth==None:
+            self.length = length
+            self.breadth = 10.0
+        elif length!=None and breadth!=None:
+            self.length = length
+            self.breadth = breadth
 
     def display(self):
-        print(f"Point({self.x}, {self.y})")
-        
-    def __add__(self, p2):
-        x = self.x + p2.x
-        y = self.y + p2.y
-        p = Point(x, y)
-        return p
+        print(f"Rectangle({self.length}, {self.breadth})")
 
-p1 = Point(5, 3)
-p2 = Point(4, 4)
-p3 = p1 + p2
-p1.display()
-p2.display()
-p3.display()
+r1 = Rectangle()
+r2 = Rectangle(12.5)
+r3 = Rectangle(12.5, 15.5)
+r1.display()
+r2.display()
+r3.display()
 
 ```
