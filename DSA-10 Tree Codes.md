@@ -76,6 +76,153 @@ public class Demo {
 ```
 
 # General Binary Tree Data Structure
+## Insert Operation in General Binary Tree
+```java
+import java.util.LinkedList;
+import java.util.Queue;
+
+class GeneralBinaryTree {
+  
+    static Node insert(Node root, int data) {
+        // check for empty case
+        if (root == null)
+            return new Node(data);
+      
+        //create a queue for level order traversal
+        Queue<Node> q = new LinkedList<>();
+        //enqueue root in the queue
+        q.add(root);
+
+      //traverse till queue is not empty
+        while (!q.isEmpty()) {
+            // deqeue a front element from queue
+            Node curr = q.poll();
+
+            //check for left child if left is null insert new node
+          	//otherwise  enqueue left child to queue
+            if (curr.left != null)
+                q.add(curr.left);
+            else {
+                curr.left = new Node(data);
+                return root;
+            }
+
+          //check for right child if right is null insert new node
+          	//otherwise  enqueue right child to queue
+            if (curr.right != null)
+                q.add(curr.right);
+            else {
+                curr.right = new Node(data);
+                return root;
+            }
+        }
+        return root;
+    }
+
+    
+}
+```
+## Delete Operation in General Binary Tree
+
+```java
+import java.util.LinkedList;
+import java.util.Queue;
+class GeneralBinaryTree {
+  
+    static void deletDeepest(Node root, Node dNode) {
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        Node curr;
+        while (!q.isEmpty()) {
+            curr = q.poll();
+
+            // If current node is the deepest node, delete it
+            if (curr == dNode) {
+                curr = null;
+                dNode = null;
+                return;
+            }
+
+            // Check the right child first
+            if (curr.right != null) {
+              
+                // If right child is the deepest node, delete it
+                if (curr.right == dNode) {
+                    curr.right = null;
+                    dNode = null;
+                    return;
+                }
+                q.add(curr.right);
+            }
+
+            // Check the left child
+            if (curr.left != null) {
+              
+                // If left child is the deepest node, delete it
+                if (curr.left == dNode) {
+                    curr.left = null;
+                    dNode = null;
+                    return;
+                }
+                q.add(curr.left);
+            }
+        }
+    }
+
+    // Function to delete the node with the given key
+    static Node deletion(Node root, int key) {
+      
+        if (root == null)
+            return null;
+
+        // If the tree has only one node
+        if (root.left == null && root.right == null) {
+          
+            // If the root node is the key, delete it
+            if (root.data == key)
+                return null;
+            else
+                return root;
+        }
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        Node curr = null;
+        Node keyNode = null;
+
+        // Level order traversal to find the deepest node and the key node
+        while (!q.isEmpty()) {
+            curr = q.poll();
+
+            // If current node is the key node
+            if (curr.data == key)
+                keyNode = curr;
+
+            if (curr.left != null)
+                q.add(curr.left);
+
+            if (curr.right != null)
+                q.add(curr.right);
+        }
+
+        // If key node is found, replace its data with the deepest node
+        if (keyNode != null) {
+          
+          	 // Store the data of the deepest node
+            int x = curr.data; 
+          
+          	 // Replace key node data with  deepest node's data
+            keyNode.data = x; 
+          
+          	 // Delete the deepest node
+            deletDeepest(root, curr); 
+        }
+        return root;
+    }
+}
+```
 
 # Binary Data Structure
 
