@@ -82,10 +82,10 @@ In Python, an object is a fundamental unit in Object-Oriented Programming (OOP) 
 ## The Four Pillars of OOP in Python 
 Object-Oriented Programming also relies on four core principles, which Python supports: 
 
-• Encapsulation: The bundling of data and methods that operate on that data into a single unit (a class). This helps in data hiding and maintaining data integrity by restricting direct access to some components. 
-• Inheritance: A mechanism allowing a new class (child/derived class) to inherit attributes and methods from an existing class (parent/base class). This promotes code reuse and helps in creating a hierarchical relationship between classes. 
-• Polymorphism: The ability of different objects to respond to the same method call in their own specific way. For example, a method could produce "Bark" for a object and "Meow" for a object. 
-• Abstraction: Hiding complex implementation details and exposing only the necessary features or interface to the user. Abstract base classes (ABCs) and interfaces are used to achieve this in Python. 
+- **Encapsulation:** The bundling of data and methods that operate on that data into a single unit (a class). This helps in data hiding and maintaining data integrity by restricting direct access to some components. 
+- **Inheritance:** A mechanism allowing a new class (child/derived class) to inherit attributes and methods from an existing class (parent/base class). This promotes code reuse and helps in creating a hierarchical relationship between classes. 
+- **Polymorphism:** The ability of different objects to respond to the same method call in their own specific way. For example, a method could produce "Bark" for a object and "Meow" for a object. 
+- **Abstraction:** Hiding complex implementation details and exposing only the necessary features or interface to the user. Abstract base classes (ABCs) and interfaces are used to achieve this in Python. 
 
 Creating and Using Objects (Example) 
 ```python
