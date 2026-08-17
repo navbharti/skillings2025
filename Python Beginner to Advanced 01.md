@@ -378,3 +378,36 @@ amphibious.sail() # Inherited from Boat
 amphibious.operate() # Defined in AmphibiousVehicle
 
 ```
+
+```python
+class Human:
+    def __init__(self):
+        self.name = "Rakesh"
+        self.head = self.Head()
+        self.brain = self.Brain()
+
+    def display(self):
+        print(f"Name: {self.name}\nHead:{self.head}\nBrain:{self.brain}")
+
+    class Head:
+        def __init__(self):
+            print("Head Created")
+        def talk(self):
+            print("talking")
+        def __str__(self):
+            return f"Head Printed"
+    class Brain:
+        def __init__(self):
+            print("Brain Created")
+        def think(self):
+            print("Thinking")
+        def __str__(self):
+            return f"Brain Printed"
+
+human = Human()
+human.display()
+human.head.talk()
+human.brain.think()
+    
+
+```

@@ -85,3 +85,63 @@ r2.display()
 r3.display()
 
 ```
+
+
+# toString() implementation in Python OOPS
+```python
+class Dog:
+    def __init__(self, name, breed, color):
+        self.name = name
+        self.breed = breed
+        self.color = color
+
+    def __str__(self):
+        """Returns a user-friendly string representation."""
+        return f"{self.name} is a {self.color} {self.breed}"
+
+    def __repr__(self):
+        """Returns a developer-friendly string representation."""
+        return f"Dog(name='{self.name}', breed='{self.breed}', color='{self.color}')"
+
+# Create an instance of the class
+my_dog = Dog("Buddy", "Golden Retriever", "golden")
+
+# Usage examples
+print(str(my_dog))  # Calls __str__()
+print(repr(my_dog)) # Calls __repr__()
+print(my_dog)       # Calls __str__() implicitly
+
+# Output:
+# Buddy is a golden Golden Retriever
+# Dog(name='Buddy', breed='Golden Retriever', color='golden')
+# Buddy is a golden Golden Retriever
+
+```
+
+
+```python
+class Rectangle:
+    def __init__(self, length, breadth):
+        self.length = length
+        self.breadth = breadth
+
+    def area(self):
+        return self.length * self.breadth
+
+    def perimeter(self):
+        return 2* (self.length + self.breadth)
+
+    def __del__(self):
+        print(f"Area: {self.area()} and Perimeter: {self.perimeter()}")
+
+    def __str__(self):
+        s = f"Length: {self.length}\nBreadth: {self.breadth}\nArea: {self.area()}\nPerimeter: {self.perimeter()}"
+        return s
+    
+r1 = Rectangle(12.5, 15.5)
+print(f"r1.area(): {r1.area()}")
+print(f"r1.perimeter(): {r1.perimeter()}")
+print(r1)
+del r1
+
+```

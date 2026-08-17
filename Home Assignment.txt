@@ -1,0 +1,83 @@
+Array and Array operations related Assignment:
+Find the Missing Number: Given an array of 
+ numbers containing elements from 1 to n
+, find the missing number.
+Reverse an Array: Reverse the order of elements in an array in place.
+Move Zeroes: Move all zeros to the end of an array while maintaining the relative order of the non-zero elements.
+Remove Duplicates from Sorted Array: Modify a sorted array so that each element appears only once.
+Second Largest Element: Find the second largest element without sorting the array.
+Max Consecutive Ones: Given a binary array, find the maximum number of consecutive 1s.
+Check if Sorted Array: Determine if an array is sorted in ascending or descending order.
+
+Two Sum: Given an array and a target sum, find two numbers that add up to the target.
+Merge Sorted Arrays: Merge two sorted arrays into a single sorted array.
+Rotate an Array: Rotate the array to the right by 
+ steps.
+Maximum Subarray Sum: Find the contiguous subarray with the largest sum (Kadane's algorithm).
+Subarray Sum Equals K: Find the number of subarrays whose sum is equal to a target value 
+.
+Find Duplicate in an Array: Find the duplicate element in an array containing elements within a specific range.
+Merge Intervals: Given a collection of intervals, merge all overlapping intervals.
+
+Stack and Stack Operations Related Assignment:
+Parenthesis Checker (Balanced Brackets): Determine if an expression has balanced opening and closing brackets. This is a classic application where opening brackets are pushed onto the stack and closing brackets must match the top of the stack when popped.
+Reverse a String/Stack: Use a stack to reverse a string or the elements within the stack itself, demonstrating the LIFO property.
+Implement Stack/Queue using the other: Building one data structure using the operations of the other (e.g., implementing a queue using two stacks or a stack using queues).
+Delete Middle Element: Deleting the middle element from a stack without using another explicit data structure.
+
+Evaluate Postfix/Prefix Expression: Calculate the value of an expression in postfix or prefix notation using a stack.
+Infix to Postfix/Prefix Conversion: Convert one form of an expression to another, applying precedence rules and associativity.
+Next Greater/Smaller Element: For each element in an array, find the nearest element to its right (or left) that is greater or smaller. This is a key monotonic stack problem pattern.
+Stock Span Problem: Calculate the span (number of consecutive days with a lower or equal price) for stock prices using a stack.
+A Stack with getMin() in O(1) Time: Design a stack that supports all standard operations plus a getMin() operation that returns the minimum element in constant time. 
+
+Queue and Queue Related Assignment:
+Implement Queue using Stacks: Design a queue data structure using only stacks to store the elements.
+Implement Stack using Queues: Design a stack data structure using only queues.
+Reverse a Queue: Reverse the order of elements in a given queue, often using an auxiliary stack or recursion.
+Reverse First K Elements of a Queue: Reverse only the first k elements of the queue, leaving the rest in the same relative order.
+Circular Queue Implementation: Implement a queue that efficiently reuses array space by connecting the last position back to the first, avoiding the shifting cost of a simple array implementation.
+
+Breadth-First Search (BFS): Many graph and tree problems use a queue for BFS traversal, such as the "Shortest Path in a Binary Maze" or "Level Order Traversal" of a binary tree.
+Sliding Window Maximum: Find the maximum element in every contiguous subarray (window) of a given size k.
+First Negative Integer in Every Window of Size K: Find the first negative integer in each window of a given size in an array.
+Generate Binary Numbers: Generate binary numbers from 1 to n using a queue to manage the sequence of numbers to process.
+First Non-Repeating Character in a Stream: Find the first non-repeating character in a stream of characters as they are added, commonly solved using a queue and a frequency map.
+Minimum Time to Rot All Oranges: Solve a grid-based problem where fresh oranges rot over time by modeling the rotting process with a multi-source BFS using a queue.
+Snake and Ladder Problem: Determine the minimum number of throws required to win a game using BFS to find the shortest path.
+
+
+Linked List Related Assignment:
+Reverse a Linked List: The classic problem of reversing the direction of the links, typically in-place using iterative or recursive approaches.
+Find the Middle Element: Efficiently finding the middle node, often solved using the slow and fast pointer (tortoise and hare) technique to achieve this in a single pass.
+Nth Node from the End: Finding the Nth node from the end of the list, often using two pointers separated by N nodes.
+Remove Duplicates from a Sorted Linked List: Iterating through a sorted list and removing nodes with the same value as their predecessor.
+Merge Two Sorted Linked Lists: Combining two lists that are already sorted into a single new sorted list efficiently.
+Detect a Loop (Cycle): Determining if a linked list contains a cycle, also commonly solved with the slow and fast pointer method.
+
+Remove Nth Node From End of List: Deleting a specific node based on its position from the end of the list.
+Add Two Numbers: Summing two numbers that are represented by linked lists, where each node contains a single digit and the digits are stored in reverse order.
+Check if a Linked List is a Palindrome: Determining if the sequence of data in the list is the same forwards and backwards.
+Intersection Point of Two Linked Lists: Finding the specific node where two separate linked lists begin to intersect and share a common tail.
+Swap Nodes in Pairs: Swapping adjacent nodes in the list without changing the data values, only the pointers.
+Partition List: Given a value x, rearranging the list so all nodes less than x come before all nodes greater than or equal to x.
+
+Linear Search Related Assignment:
+Basic Search: Find the index of a given element X in an array/list. If it's not present, return -1.
+Search in a Range: Find a target element within a specific range of indices within an array.
+Search in String: Apply the linear search logic to find a specific character within a string.
+Find the Minimum/Maximum Number: Traverse the entire array to find the smallest or largest element.
+Search in 2D Arrays: Extend the linear search concept to a two-dimensional array, checking each cell sequentially.
+Counting Occurrences: Determine how many times a particular element appears in an array.
+Find the Missing Number: Given an array of size 
+ with distinct integers in the range of [1, 
+], find the missing number. A naive approach involves linearly searching for each number in the range within the array.
+Find the First Repeating Element: Identify the element that occurs more than once and whose first occurrence has the smallest index.
+
+Binary Search Related Assignment:
+Searching in a Sorted Array: The standard application, involving finding a target element or its insertion position.
+First and Last Occurrence: Finding the first and last index of a target element that may have duplicates in a sorted array.
+Count Occurrences: Using the first and last occurrence indices to determine the total count of a specific element.
+Finding Floor and Ceiling: Locating the largest element less than or equal to a target (floor) and the smallest element greater than or equal to a target (ceiling) in a sorted array.
+Square Root of a Number: Calculating the integer square root of a number efficiently by searching for the value x where x*x <= number and (x+1)*(x+1) > number.
+

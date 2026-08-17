@@ -82,8 +82,7 @@ public class ArrayBasics {
 ---
 
 ![Array](images//DSA_array_00_2.jpg)
-<img src="/images/DSA_array_00_2.jpg" alt="Description">
-
+*This is the caption for the image.*
 
 ### Java Array Initialization Examples
 
