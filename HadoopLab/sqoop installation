@@ -1,0 +1,344 @@
+Ubuntu installation
+
+==============Java 8 installation================
+sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+
+java -version
+locate: Other Location>Computer>usr>lib>jvm>java-8-openjdk-amd64
+
+==============hadoop 2.7.3 Single Node installation =================
+https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/
+hadoop-2.7.3.tar.gz (204M)
+
+1. sudo apt-get install openssh-server
+download approval : y
+
+2. java -version
+
+3. ssh-keygen
+
+4. cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_key
+
+5. ssh localhost
+y
+
+6. path setting file
+sudo gedit $HOME/.bashrc 
+
+# Java 8 Path Setup
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+source ~/.bashrc
+
+7. nano ~/.bashrc
+
+# HADOOP VARIABLES START
+export HADOOP_HOME=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+
+8. go to folder: hadoop-2.7.3/etc/hadoop
+haddop.env.sh
+in line 25: java path setting
+
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+
+9. core-site.xml
+
+
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+</configuration>
+
+10. hdfs-site.xml
+
+<property>
+    <name>dfs.replication</name>
+    <value>1</value>
+</property>
+
+11. copy mapred-site.xml 
+
+<configuration>
+
+    <!-- 1. Define Execution Framework -->
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+
+</configuration>
+
+12. yarn-site.xml
+
+ <!-- 2. Node Manager Auxiliary Services -->
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+
+13. refresh path setting file
+
+source ~/.bashrc
+
+
+14. go to hodoop-2.7.3 folder
+cd /home/navbharti/hadoop-2.7.3/
+bin/hadoop namenode -format
+sbin/start-all.sh (start all hadoop services)
+jps  (list hadoop services)
+
+NodeManager
+ResourceManager
+DataNode
+SecondaryNameNode
+NameNode
+Jps
+
+
+===================Hadoop Intro and Architecture=====
+key features of hadoop::
+distributed storage and processing
+Scalable and cost-effective
+Fault-tolerant using data replication
+High availability
+Open-Source and community -driven
+
+Hadoop Ecosystem (Core Components)::
+HDFS (Hadoop Distributed File System) - storage layer
+YARN (Yet Another Resource Negotiator) - Resource Management
+MapReduce - Data processing framework
+Hadoop Common - Shared utilities and libraries
+
+Hadoop Architecture::
+NameNode (Master): maintains metadata  (file name, permission, block locations etc)
+DataNode (Slave): Stores actual data blocks and reports to the NameNode
+Secondary NameNode: Assists NameNode by maintaining checkpoints (not the backup)
+File are split into blocks (default 128MB) and replicated across multiple DataNodes.
+
+YARN Architecture::
+ResourceManager: Manages cluster resources globally
+NodeManager: Manages resources on individual nodes
+ApplicationMaster: Manages application execution
+containers: Represent allocated resources (CPU and memory) 
+
+
+MapReduce Processing Model::
+MapReduce is a programming model used for parallel data processing. It works in two main phases: Map Phase processes input data, and Reduce Phase aggregates the output geenrated by the Map phase.
+
+Advantages of Hadoop
+Handles Very large datasets efficiently
+Runs on commodity hardware
+Reliable and fault-tolerant
+Supports structured and unstructured data
+
+Use Cases:
+Log Processing and analysis
+Data warehousing 
+Recommendataion Systems
+Fraud Detection
+Social media analytics
+
+================HDFS===========================
+1. hadoop distributed file system -- to store data
+
+Filesystem -->Directory-->subdir-->file-->data
+
+Linux vs Hadoop (wrt storage area) (127.0.0.1 server)
+
+1. cd /home/navbharti/hadoop-2.7.3
+
+bin/hdfs dfs -makdir /test1
+
+2. bin/hdfs dfs -ls /
+
+3. bin/hdfs dfs -makdir /test1/data1
+
+4. bin/hdfs dfs -ls /test1
+
+Linux has a file -- file.txt ---> to hdfs
+
+5. bin/hdfs dfs -put /home/navbharti/Desktop/file.txt /test1/data1
+
+or 
+
+ bin/hdfs dfs -copyFromLocal /home/navbharti/Desktop/file.txt /test1/data1
+
+6. bin/hdfs dfs -get /test1/data1/file.txt /home/navbharti/Desktop
+
+6. bin/hdfs dfs -copyToLocal /test1/data1/file.txt /home/navbharti/Desktop
+
+7.  bin/hdfs dfs -lsr /
+
+8. bin/hdfs dfs -cat /test1/data1/file.txt
+
+9. bin/hdfs dfs -head /test1/data1/file.txt
+
+10. bin/hdfs dfs -tail /test1/data1/file.txt
+
+11. bin/hdfs dfs -rm /test1/data1/file.txt
+
+12. bin/hdfs dfs -rm -r /test1/data1
+
+
+hdfs -- /test1/data1/file.txt
+hdfs -- /test2
+
+13. bin/hdfs dfs -cp /test1/data1/file.txt /test2
+
+14. bin/hdfs dfs -mv /test1/data1/file.txt /test2
+
+15. bin/hdfs dfs -du /test1
+
+16. bin/hdfs dfs -df -h /
+
+17. bin/hdfs dfs -count /test1
+
+18. bin/hdfs dfs -chmod 755 /test1
+
+19. bin/hdfs dfs -test -e /test1/data1/file.txt --to check whther file is available?
+
+
+
+
+
+
+
+
+
+
+sqoop installation
+Sqoop Architecture
+Sqoop -Linux Commands
+
+1. List databases
+>sqoop list-databases --connect "jdbc:mysql://localhost/" --username root --password navbharti
+
+
+2. List tables
+>sqoop list-tables --connect "jdbc:mysql://localhost/amity" --username root --password navbharti
+
+3. eval command (create new table)
+>sqoop list-databases --connect "jdbc:mysql://localhost/amity" --username root --password navbharti --query "Create table mytable(id int, name varchar(50))"
+
+4. eval command (insert row/s)
+>sqoop list-databases --connect "jdbc:mysql://localhost/amity" --username root --password navbharti --query "insert into mytable values (1, 'ram'), (2,'asif'), (3, 'Luxmi')"
+
+5. eval command (select)
+>sqoop list-databases --connect "jdbc:mysql://localhost/amity" --username root --password navbharti --query "select * from mytable"
+
+
+6. Import 
+
+7. Import single table
+>sqoop import 
+--driver com.mysql.jdbc.Driver
+--connect 'jdbc:mysql://localhost/amity'
+--username root
+--password navbharti
+--table mytable
+--m 1
+
+no of input split/datanode = no of map block 
+
+hadoop services
+namenode - 1
+datanode - 1
+secondarynamenode - 1
+resourcemanager -1
+nodemanager - 1
+
+
+production/multinode cluster - 4 (1+3)
+
+8. Import all tables
+>sqoop import-all-tables 
+--driver com.mysql.jdbc.Driver
+--connect 'jdbc:mysql://localhost/amity'
+--username root
+--password navbharti
+--table mytable
+--m 1
+
+9. Conditional Import - table
+>sqoop import-all-tables 
+--driver com.mysql.jdbc.Driver
+--connect 'jdbc:mysql://localhost/amity'
+--username root
+--password navbharti
+--table mytable
+--where "id=5 and name='shyam'"
+--m 1
+
+10. Import on Target Directory
+>sqoop import-all-tables 
+--driver com.mysql.jdbc.Driver
+--connect 'jdbc:mysql://localhost/amity'
+--username root
+--password navbharti
+--table mytable
+--target-dir /newdata
+--m 1
+
+
+11. Incremental Import
+newTable (id, name) 
+day1 record-1 to 10
+day1 record-11 to 20
+day1 record-21 to 30
+day1 record-31 to 40
+day1 record-41 to 50
+
+>sqoop import-all-tables 
+--driver com.mysql.jdbc.Driver
+--connect 'jdbc:mysql://localhost/amity'
+--username root
+--password navbharti
+--table mytable
+--incremental append
+--check-column id
+--last-value 10
+--m 1
+
+
+
+Export 
+hdfs --/data --file.txt --1,mahesh,patna
+
+mysql --db1 --employee --(id, name, address)
+
+>sqoop export 
+--driver com.mysql.jdbc.Driver
+--connect 'jdbc:mysql://localhost/db1'
+--username root
+--password navbharti
+--table employee
+--export-dir /data
+
+
+Job Creation
+>sqoop job --create db_list_job --list-databases --connect "jdbc:mysql://localhost/" --username root --password navbharti
+
+>sqoop job --list
+
+>sqoop job --exec db_list_job
+
+>sqoop job --show db_list_job
+
+
+
+
+
+
+===========================hive====================
+bin/hadoop fs -mkdir /tmp
+bin/hadoop fs -mkdir /user
+bin/hadoop fs -mkdir /user/hive
+bin/hadoop fs -mkdir /user/hive/warehouse
+bin/hadoop fs -chmod g+w /tmp
+bin/hadoop fs -chmod g+w /user/hive/warehouse
